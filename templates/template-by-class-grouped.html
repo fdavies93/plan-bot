@@ -14,7 +14,7 @@
                     <td>Dates: {{ week.start_date }} - {{ week.end_date }}</td>
                 </tr>
                 <tr>
-                    <td colspan="4">Weekly Objectives: {{ class.weekly_objective }}</td>
+                    <td colspan="4">Weekly Objectives: {{ class.weekly_objective|safe }}</td>
                 </tr>
             </tbody>
         </table>
@@ -36,12 +36,12 @@
                     <td>Pages: SB {{ period.student_book }} WB {{ period.workbook }}</td>
                 </tr>
                 <tr class="class-row2">
-                    <td colspan="4">Objectives: {{ period.objectives }}</td>
+                    <td colspan="4">Objectives: {{ period.objectives|safe }}</td>
                 </tr>
                 {% for activity in period.activities %}
                 <tr>
                     <td>({{activity.time}}) {{ activity.name }} </td>
-                    <td colspan="3"> {{ activity.detail }} </td>
+                    <td colspan="3"> {{ activity.detail|safe }} </td>
                 </tr>
                 {% endfor %}
                 <tr>

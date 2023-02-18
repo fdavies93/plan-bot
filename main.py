@@ -80,7 +80,7 @@ def group_by_day(data : dict):
 
 template = env.get_template("template-by-class-grouped.html")
 
-with open("./data/week_5.json", "r") as f:
+with open("./data/week_4.json", "r") as f:
     data = json.load(f)
 
 data = convert_weekdays(data)
