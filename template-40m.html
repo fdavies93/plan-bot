@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Name: Tr Frank</td>
+                    <td>Class: {{ CLASS_NAME }}</td>
+                    <td>Week: {{WEEK_NUM}}</td>
+                    <td>Dates: {{DATE_START}} - {{DATE_END}}</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Weekly Objectives: {{WEEKLY_OBJECTIVES}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Replicate as many times as needed for this class. -->
+        <table>
+            <tbody>
+                <thead>
+                    <tr>
+                        <th colspan="4">{{ WEEKDAY }}</td>
+                    </tr>
+                </thead>
+                <!-- Replicate from here as many times as needed for a weekday. -->
+                <tr>
+                    <td>Class: {{ CLASS_NAME }}</td>
+                    <td>Subject: {{ SUBJECT_NAME }}</td>
+                    <td>Time: {{ TIME }}</td>
+                    <td>Pages: SB {{ STUDENT_BOOK_NO }} WB {{ WORKBOOK_NO }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Objectives: {{ CLASS_OBJECTIVES }}</td>
+                </tr>
+                <tr>
+                    <td>(5m) Warm up</td>
+                    <td colspan="3">{{ WARM_UP }}</td>
+                </tr>
+                <tr>
+                    <td>(5m) Engagement / intro</td>
+                    <td colspan="3">{{ INTRO }}</td>
+                </tr>
+                <tr>
+                    <td>(10-15m) Activity 1</td>
+                    <td colspan="3">{{ ACTIVITY_1 }}</td>
+                </tr>
+                <tr>
+                    <td>(10-15m) Activity 2</td>
+                    <td colspan="3">{{ ACTIVITY_2 }}</td>
+                </tr>
+                <tr>
+                    <td>(5m) Cool down</td>
+                    <td colspan="3">{{ COOL_DOWN }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Materials {{ MATERIALS }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
