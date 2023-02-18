@@ -29,13 +29,13 @@
                 </thead>
                 <!-- Replicate from here as many times as needed for a weekday. -->
                 {% for period in day.periods %}
-                <tr>
+                <tr class="class-row1">
                     <td>Class: {{ class.name }}</td>
                     <td>Subject: {{ period.subject }}</td>
                     <td>Time: {{ period.start_time }} - {{ period.end_time }}</td>
                     <td>Pages: SB {{ period.student_book }} WB {{ period.workbook }}</td>
                 </tr>
-                <tr>
+                <tr class="class-row2">
                     <td colspan="4">Objectives: {{ period.objectives }}</td>
                 </tr>
                 {% for activity in period.activities %}

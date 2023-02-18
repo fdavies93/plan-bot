@@ -7,6 +7,42 @@ env = Environment(
     autoescape=select_autoescape()
 )
 
+def filter_classes(data : dict, include : set = set()):
+    edited = deepcopy(data)
+    new_classes = []
+    for clas in edited["classes"]:
+        if clas["name"] in include:
+            new_classes.append(clas)
+    edited["classes"] = new_classes
+    return edited
+
+def filter_days(data : dict, include : set = set()):
+    edited = deepcopy(data)
+    new_classes = []
+    for clas in edited["classes"]:
+        # filter periods
+        new_periods = []
+        for period in clas["periods"]:
+            if period["weekday"] in include:
+                new_periods.append(period)
+        clas["periods"] = new_periods
+
+        if len(clas["periods"]) > 0:
+            new_classes.append(clas)
+
+        # filter days if they exist
+        if "days" not in clas:
+            continue
+
+        new_days = []
+        for day in clas["days"]:
+            if day["weekday"] in include:
+                new_days.append(day)
+        clas["days"] = new_days
+
+    edited["classes"] = new_classes
+    return edited
+
 def get_days_of_class(clas : dict):
     days = set()
     for period in clas["periods"]:
@@ -54,7 +90,12 @@ grouped = group_by_day(data)
 with open('./renders/grouped.json', "w") as f:
     json.dump(grouped,f, indent=4)
 
-output = template.render(grouped)
+filtered = filter_days(grouped, {1})
+
+with open('./renders/filtered.json', "w") as f:
+    json.dump(filtered,f, indent=4)
+
+output = template.render(filtered)
 
 with open("./renders/example.html", "w") as f:
     f.writelines(output)
